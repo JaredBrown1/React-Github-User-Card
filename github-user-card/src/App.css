@@ -2,6 +2,22 @@
   text-align: center;
 }
 
+.github-card {
+  display: flex;
+  justify-content: center;
+  border: solid 2px;
+}
+
+.profile-pic {
+  border: solid 2px;
+  width: 400px;
+}
+
+.profile-info {
+  border: solid 2px;
+  width: 400px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
