@@ -1,27 +1,23 @@
 import React from "react";
+import { Card, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 
-import "../App.css";
-
-function Card() {
+const Cards = props => {
   return (
-    <div className="github-card">
-      <div className="profile-pic">
-        image
-        <img />
-      </div>
-      <div className="profile-info">
-        card info
-        <h3>name</h3>
-        <p>userName</p>
-        <p>location</p>
-        <p>profile</p>
-        <a>address/url</a>
-        <p>followers</p>
-        <p>following</p>
-        <p>bio</p>
-      </div>
+    <div>
+      <Card>
+        <img src={props.img} width="20%" alt={props.login}></img>
+        <CardTitle>
+          <strong>{props.name}</strong>
+        </CardTitle>
+        <CardSubtitle>
+          <a href={props.url}>Profile</a>
+        </CardSubtitle>
+
+        <CardBody>Bio: {props.bio}</CardBody>
+        <CardSubtitle>Location: {props.location}</CardSubtitle>
+      </Card>
     </div>
   );
-}
+};
 
-export default Card;
+export default Cards;
