@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
 import Card from "./components/Card";
+import FollowerCard from "./components/followerCard";
 import axios from "axios";
 
 class App extends React.Component {
   state = {
-    users: []
+    users: [],
+    followers: []
   };
 
   componentDidMount() {
@@ -14,6 +16,14 @@ class App extends React.Component {
       .then(res => {
         console.log("from CDM Card.js", res);
         return this.setState({ users: [res.data] });
+      })
+      .catch(err => console.error(err));
+
+    axios
+      .get("https://api.github.com/users/JaredBrown1/followers")
+      .then(res => {
+        console.log("from CDM FollowerCard.js", res);
+        return this.setState({ followers: res.data });
       })
       .catch(err => console.error(err));
   }
@@ -29,6 +39,16 @@ class App extends React.Component {
               name={item.name}
               bio={item.bio}
               location={item.location}
+              img={item.avatar_url}
+            />
+          );
+        })}
+        <h1>Followers</h1>
+        {this.state.followers.map(item => {
+          return (
+            <FollowerCard
+              login={item.login}
+              key={item.id}
               img={item.avatar_url}
             />
           );
