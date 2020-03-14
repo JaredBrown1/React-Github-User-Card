@@ -13,7 +13,7 @@ class App extends React.Component {
       .get("https://api.github.com/users/JaredBrown1")
       .then(res => {
         console.log("from CDM Card.js", res);
-        return this.setState({ userCards: [res.data] });
+        return this.setState({ users: [res.data] });
       })
       .catch(err => console.error(err));
   }
@@ -23,7 +23,15 @@ class App extends React.Component {
       <div className="App">
         <h1>Github User Card</h1>
         {this.state.users.map(item => {
-          return <Card key={item.id} img={item.avatar_ur} />;
+          return (
+            <Card
+              key={item.id}
+              name={item.name}
+              bio={item.bio}
+              location={item.location}
+              img={item.avatar_url}
+            />
+          );
         })}
       </div>
     );
