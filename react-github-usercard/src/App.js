@@ -1,8 +1,16 @@
 import React from "react";
 import "./App.css";
+import axios from "axios";
+import styled from "styled-components";
+
+//components
 import Card from "./components/Card";
 import FollowerCard from "./components/followerCard";
-import axios from "axios";
+
+const Content = styled.div`
+  margin: 0 auto;
+  max-width: 800px;
+`;
 
 class App extends React.Component {
   state = {
@@ -30,7 +38,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <Content className="App">
         <h1>Github User Card</h1>
         {this.state.users.map(item => {
           return (
@@ -53,7 +61,7 @@ class App extends React.Component {
             />
           );
         })}
-      </div>
+      </Content>
     );
   }
 }
